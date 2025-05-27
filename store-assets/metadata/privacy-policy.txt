@@ -1,0 +1,45 @@
+# Privacy Policy for YT Outline & Snap
+
+## Introduction
+
+YT Outline & Snap is a browser extension that helps users capture snapshots and generate outlines for YouTube videos. This privacy policy explains how we handle your data.
+
+## Data Collection and Usage
+
+### Local Storage
+- All snapshots, outlines, and user-generated content are stored locally in your browser using Chrome's Storage API
+- No data is transmitted to our servers
+- Your content remains on your device and is not accessible to us or any third parties
+
+### API Usage
+- When using the Gemini AI features, your video transcript and snapshots are sent directly to Google's Gemini API
+- Your API key is stored locally and used only for authentication with Google's services
+- We do not intercept, store, or have access to any data sent between your browser and Google's API
+
+### Permissions
+The extension requires the following permissions:
+- Access to YouTube pages to function properly
+- Storage access to save your snapshots and settings locally
+- WebRequest to communicate with the Gemini API (using your provided API key)
+
+## Data Sharing and Disclosure
+
+We do not:
+- Collect personal information
+- Share any user data with third parties
+- Use tracking or analytics services
+- Store any user data on external servers
+
+## Data Security
+
+Since all data is stored locally on your device, security is managed by your browser's built-in security features. Your API key is stored securely in Chrome's Storage API.
+
+## Changes to This Policy
+
+We may update this privacy policy from time to time. Any changes will be reflected in the extension's documentation and in this policy.
+
+## Contact
+
+If you have any questions about this privacy policy, please contact us at [your contact information].
+
+Last updated: May 23, 2025
