@@ -23,6 +23,7 @@ interface Snapshot {
   videoUrl: string;
   imageDataUrl?: string;
   description: string; // ユーザーが編集可能な説明
+  videoId?: string; // 動画IDを保持できるようにプロパティを追加
 }
 
 // Define outline item type
@@ -190,7 +191,13 @@ const OverlayPanel: React.FC<OverlayPanelProps> = ({
     }
     
     // Process each snapshot
-    localSnapshots.forEach((snapshot, index) => {
+    const snapshotsToExport = localSnapshots.filter(s => {
+      // スナップショットオブジェクトのvideoIdプロパティ、またはvideoUrlから抽出したIDが現在のvideoIdと一致するかを確認
+      const sVideoId = s.videoId || getVideoIdFromUrl(s.videoUrl);
+      return sVideoId === videoId; // videoId はこの関数の冒頭でURLパラメータから取得
+    });
+
+    snapshotsToExport.forEach((snapshot, index) => {
       if (snapshot.imageDataUrl) {
         const totalSeconds = snapshot.time;
         const hh = Math.floor(totalSeconds / 3600);
