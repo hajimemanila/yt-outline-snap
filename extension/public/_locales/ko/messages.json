@@ -1,0 +1,372 @@
+{
+    "extension_name": {
+      "message": "YT Outline & Snap"
+    },
+    "extension_description": {
+      "message": "YouTube 동영상 요약을 생성하고 스냅샷을 촬영하는 오버레이 확장 프로그램"
+    },
+    "generate_summary": {
+      "message": "요약 생성"
+    },
+    "capture_snapshot": {
+      "message": "스냅샷 촬영"
+    },
+    "capture_all": {
+      "message": "모두 촬영"
+    },
+    "api_key_settings": {
+      "message": "API 키 설정"
+    },
+    "api_key_label": {
+      "message": "Gemini API 키"
+    },
+    "model_name_label": {
+      "message": "모델명"
+    },
+    "save_settings": {
+      "message": "설정 저장"
+    },
+    "drm_warning": {
+      "message": "DRM 콘텐츠가 감지되었습니다. 스냅샷 기능이 비활성화되었습니다."
+    },
+    "performance_warning": {
+      "message": "WebCodecs를 사용할 수 없습니다. 성능이 저하된 대체 방법을 사용합니다."
+    },
+    "max_resolution_label": {
+      "message": "최대 해상도"
+    },
+    "settings_saved": {
+      "message": "설정이 성공적으로 저장되었습니다"
+    },
+    "error_api_key_missing": {
+      "message": "API 키가 필요합니다. 옵션 페이지에서 설정해 주세요."
+    },
+    "error_api_call": {
+      "message": "Gemini API 호출 오류: "
+    },
+    "error_snapshot": {
+      "message": "스냅샷 촬영 오류: "
+    },
+    "loading": {
+      "message": "로딩 중..."
+    },
+    "overlay_generate_outline": {
+      "message": "개요 생성"
+    },
+    "overlay_delete_all": {
+      "message": "모두 삭제"
+    },
+    "overlay_export": {
+      "message": "내보내기"
+    },
+    "overlay_edit": {
+      "message": "편집"
+    },
+    "overlay_delete": {
+      "message": "삭제"
+    },
+    "overlay_save": {
+      "message": "저장"
+    },
+    "overlay_cancel": {
+      "message": "취소"
+    },
+    "overlay_options": {
+      "message": "옵션 설정"
+    },
+    "overlay_loading": {
+      "message": "생성 중..."
+    },
+    "overlay_no_snapshots": {
+      "message": "아직 스냅샷이 없습니다"
+    },
+    "overlay_no_outline": {
+      "message": "사용 가능한 개요가 없습니다"
+    },
+    "overlay_custom_snapshots": {
+      "message": "여러 사용자 정의 스냅샷"
+    },
+    "overlay_capture_all": {
+      "message": "모두 촬영"
+    },
+    "time_prefix": {
+      "message": "시간:"
+    },
+    "scroll_to_top": {
+      "message": "맨 위로 스크롤"
+    },
+    "capture_all_outline_snapshots": {
+      "message": "모든 개요 타임스탬프에서 스냅샷 촬영"
+    },
+    "custom_times_placeholder": {
+      "message": "00:01:48,00:03:06,00:03:13"
+    },
+    "invalid_timestamps_error": {
+      "message": "유효하지 않은 타임스탬프이거나 촬영 기능을 사용할 수 없습니다."
+    },
+    "ai_description_generating": {
+      "message": "AI 설명을 생성하는 중..."
+    },
+    "error_prefix": {
+      "message": "오류:"
+    },
+    "retry": {
+      "message": "재시도"
+    },
+    "ai_regenerate": {
+      "message": "AI 재생성"
+    },
+    "ai_generate": {
+      "message": "AI 설명 생성"
+    },
+    "no_description": {
+      "message": "사용 가능한 설명이 없습니다."
+    },
+    "processing": {
+      "message": "처리 중..."
+    },
+    "storage_usage": {
+      "message": "저장소 사용량"
+    },
+    "storage_used": {
+      "message": "사용량:"
+    },
+    "snapshot_count": {
+      "message": "스냅샷 개수:"
+    },
+    "average_size": {
+      "message": "평균 크기:"
+    },
+    "snapshot": {
+      "message": "스냅샷"
+    },
+    "clearing_data": {
+      "message": "데이터 삭제 중..."
+    },
+    "clear_all_data": {
+      "message": "모든 데이터 삭제"
+    },
+    "clear_data_success": {
+      "message": "모든 데이터가 성공적으로 삭제되었습니다"
+    },
+    "clear_data_error": {
+      "message": "데이터 삭제 중 오류가 발생했습니다"
+    },
+    "loading_storage_info": {
+      "message": "저장소 정보를 불러오는 중..."
+    },
+    "api_settings": {
+      "message": "API 설정"
+    },
+    "get_api_key_from": {
+      "message": "에서 얻을 수 있습니다"
+    },
+
+    "high_resolution_warning": {
+      "message": "높은 해상도는 메모리 사용량을 증가시킵니다."
+    },
+    "beta_features": {
+      "message": "베타 기능"
+    },
+    "beta_features_heading": {
+      "message": "베타 기능"
+    },
+    "outline_edit_feature": {
+      "message": "개요 편집 기능"
+    },
+    "outline_edit_feature_label": {
+      "message": "개요 편집 기능"
+    },
+    "outline_edit_description": {
+      "message": "개요 데이터 편집을 허용합니다. 이 기능은 베타 버전입니다."
+    },
+    "outline_edit_description_long": {
+      "message": "개요 데이터 편집을 허용합니다. 이 기능은 베타 버전입니다."
+    },
+    "ad_pause_feature": {
+      "message": "광고 중 스냅샷 촬영 일시 정지"
+    },
+    "ad_pause_feature_label": {
+      "message": "광고 중 스냅샷 촬영 일시 정지"
+    },
+    "ad_pause_description": {
+      "message": "광고 재생 중에 스냅샷 촬영을 일시 정지하고 광고 종료 후 재개합니다. 이 기능은 베타 버전입니다."
+    },
+    "ad_pause_description_long": {
+      "message": "광고 재생 중에 스냅샷 촬영을 일시 정지하고 광고 종료 후 재개합니다. 이 기능은 베타 버전입니다."
+    },
+    "debug_options": {
+      "message": "개발자 옵션"
+    },
+    "debug_warning": {
+      "message": "이 설정은 개발자 전용입니다. 변경하면 예상치 못한 동작이 발생할 수 있습니다."
+    },
+    "i18n_overlay_option": {
+      "message": "오버레이 UI 다국어 지원 활성화 (ENABLE_I18N_OVERLAY)"
+    },
+    "i18n_overlay_description": {
+      "message": "오버레이 패널 UI 텍스트를 현지화합니다. 이 설정은 페이지 새로고침 시 재설정됩니다."
+    },
+    "i18n_prompts_option": {
+      "message": "AI 프롬프트 다국어 지원 활성화 (ENABLE_I18N_PROMPTS)"
+    },
+    "i18n_prompts_description": {
+      "message": "언어 설정에 따라 AI 프롬프트 템플릿을 전환합니다. 이 설정은 페이지 새로고침 시 재설정됩니다."
+    },
+    "exclude_video_url_option_label": {
+      "message": "개요 생성 프롬프트에서 동영상 URL 제외"
+    },
+    "exclude_video_url_description_long": {
+      "message": "프롬프트에서 동영상 URL을 제외하면 개요 생성 속도가 향상되고 AI 토큰을 절약할 수 있지만, 생성되는 개요 정보의 정확성이 떨어질 수 있습니다."
+    },
+    "language_label": {
+      "message": "언어"
+    },
+    "english": {
+      "message": "영어"
+    },
+    "japanese": {
+      "message": "일본어"
+    },
+    "confirm_clear_data": {
+      "message": "모든 스냅샷과 개요 데이터가 삭제됩니다.\n이 작업은 되돌릴 수 없습니다.\n계속하시겠습니까?"
+    },
+    "current_language": {
+      "message": "현재 언어"
+    },
+    "custom_timestamp": {
+      "message": "사용자 정의 타임스탬프"
+    },
+    "custom_timestamp_description": {
+      "message": "사용자 정의 타임스탬프에서 촬영된 스냅샷"
+    },
+    "collapse": {
+      "message": "접기"
+    },
+    "expand": {
+      "message": "펼치기"
+    },
+    "edit_outline": {
+      "message": "개요 편집"
+    },
+    "save_error": {
+      "message": "저장 중 오류 발생"
+    },
+    "outline_format_instruction": {
+      "message": "형식: [MM:SS] 타임스탬프 다음에 제목, 그 다음에 설명 (선택사항)"
+    },
+    "title_label": {
+      "message": "제목"
+    },
+    "description_optional": {
+      "message": "설명 (선택사항)"
+    },
+    "saving": {
+      "message": "저장 중..."
+    },
+    "warning_label": {
+      "message": "경고"
+    },
+    "no_transcript_warning": {
+      "message": "이 동영상의 자막을 가져올 수 없어 개요에 부정확한 정보가 포함될 수 있습니다."
+    },
+    "outline_heading": {
+      "message": "개요"
+    },
+    "rewind_5_seconds": {
+      "message": "5초 되감기"
+    },
+    "pause": {
+      "message": "일시정지"
+    },
+    "play": {
+      "message": "재생"
+    },
+    "forward_5_seconds": {
+      "message": "5초 빨리감기"
+    },
+    "take_snapshot": {
+      "message": "스냅샷 촬영"
+    },
+    "delete_outline": {
+      "message": "개요 삭제"
+    },
+    "no_outline_items": {
+      "message": "개요 항목을 찾을 수 없습니다."
+    },
+  "recommended_model_text": {
+    "message": "권장 모델: gemini-2.5-flash-preview-05-20이 권장됩니다."
+  },
+  "advanced_settings_heading": {
+    "message": "고급 설정"
+  },
+  "language_settings_heading": {
+    "message": "언어 설정"
+  },
+  "language_setting_description": {
+    "message": "개요와 이미지 설명이 한국어로 생성됩니다."
+  },
+  "language_select_label": {
+    "message": "언어 선택"
+  },
+  "language_english": {
+    "message": "영어"
+  },
+  "language_japanese": {
+    "message": "일본어"
+  },
+  "language_chinese_simplified": {
+    "message": "중국어 (간체)"
+  },
+  "language_korean": {
+    "message": "한국어"
+  },
+  "save_settings_button": {
+    "message": "설정 저장"
+  },
+  "settings_saved_status": {
+    "message": "설정이 저장되었습니다"
+  },
+  "options_page_title": {
+    "message": "YT Outline & Snap - 옵션"
+  },
+  "data_management_button": {
+    "message": "데이터 관리"
+  },
+  "data_management_heading": {
+    "message": "데이터 관리"
+  },
+  "data_management_description": {
+    "message": "저장된 스냅샷과 개요 데이터를 관리합니다."
+  },
+  "video_title": {
+    "message": "동영상 제목"
+  },
+  "last_updated": {
+    "message": "최종 업데이트"
+  },
+  "delete_button": {
+    "message": "삭제"
+  },
+  "delete_success": {
+    "message": "성공적으로 삭제되었습니다"
+  },
+  "rewind_5_seconds_tooltip": {
+    "message": "5초 되감기"
+  },
+  "play_tooltip": {
+    "message": "재생"
+  },
+  "pause_tooltip": {
+    "message": "일시정지"
+  },
+  "forward_5_seconds_tooltip": {
+    "message": "5초 빠리감기"
+  },
+  "take_snapshot_tooltip": {
+    "message": "스냅샷 촬영"
+  },
+  "delete_outline_tooltip": {
+    "message": "개요 삭제"
+  }
+}

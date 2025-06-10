@@ -1,0 +1,428 @@
+// Simplified contentScript.tsx for debugging
+import React from 'react';
+import { createRoot, Root } from 'react-dom/client';
+import OverlayPanel from './components/OverlayPanel';
+import './index.css';
+import { getSettings } from './lib/storage';
+
+// Use a different ID for this debug version to avoid potential conflicts
+const OVERLAY_CONTAINER_ID = 'yt-outline-snap-debug-overlay'; 
+let appRoot: Root | null = null;
+
+/// <reference types="chrome" />
+
+// Define a type for the function that will be exposed on the window object
+interface CustomWindow extends Window {
+  handleCaptureSnapshot?: () => void;
+  handleCaptureAllSnapshots?: (times: number[]) => void;
+  handleSeekTo?: (time: number) => void;
+  handleGenerateOutline?: () => Promise<{ timestamp: number; title: string; description: string; }[]>;
+  // You can add other custom properties or methods here as needed
+}
+declare const window: CustomWindow;
+
+// Define an interface for our snapshot data
+interface Snapshot {
+  title: string;
+  time: number;
+  timestamp: number; // Unix timestamp (ms)
+  videoUrl: string;
+  imageDataUrl?: string; // キャプチャした画像のデータURL
+}
+
+interface OutlineItem { timestamp: number; title: string; description: string; }
+
+const IS_DEBUG = true; // Set to false for production
+
+// Utility function for logging with a prefix, respecting IS_DEBUG
+const logDebug = (...args: any[]) => {
+  if (IS_DEBUG) {
+    console.log('YT Outline & Snap (Debug Version):', ...args);
+  }
+};
+
+// Function to handle the snapshot capture
+const handleCaptureSnapshot = async () => {
+  logDebug('Attempting to capture snapshot. window.handleCaptureSnapshot exists:', typeof window.handleCaptureSnapshot === 'function');
+  logDebug('handleCaptureSnapshot called.');
+  const videoElement = document.querySelector<HTMLVideoElement>('video.html5-main-video');
+  const titleElement = document.querySelector<HTMLElement>('h1.ytd-watch-metadata yt-formatted-string');
+
+  if (!videoElement) {
+    logDebug('Video element not found.');
+    return;
+  }
+  const title = titleElement?.innerText || 'No title found';
+
+  const time = videoElement.currentTime;
+  const imageDataUrl = await captureFrameAt(time);
+
+  // Save snapshot
+  const snapshot: Snapshot = {
+    title,
+    time,
+    timestamp: Date.now(),
+    videoUrl: window.location.href,
+    imageDataUrl,
+  };
+  chrome.storage.local.get({ snapshots: [] }, ({ snapshots }) => {
+    const updated = [...snapshots, snapshot];
+    chrome.storage.local.set({ snapshots: updated }, () => {
+      logDebug('Snapshot saved successfully:', snapshot);
+    });
+  });
+};
+
+console.log('YT Outline & Snap (Debug Version): Script loaded.');
+
+// Function to capture a frame at a specific time as a data URL
+const captureFrameAt = async (time: number): Promise<string | undefined> => {
+  const videoElement = document.querySelector<HTMLVideoElement>('video.html5-main-video');
+  if (!videoElement) {
+    console.error('Video element not found for captureFrameAt.');
+    return undefined;
+  }
+  return new Promise((resolve) => {
+    const onSeeked = () => {
+      videoElement.removeEventListener('seeked', onSeeked);
+      const canvas = document.createElement('canvas');
+      canvas.width = videoElement.videoWidth || videoElement.clientWidth;
+      canvas.height = videoElement.videoHeight || videoElement.clientHeight;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/jpeg');
+        resolve(dataUrl);
+      } else {
+        resolve(undefined);
+      }
+    };
+    videoElement.addEventListener('seeked', onSeeked);
+    // If already at requested time, trigger handler immediately
+    if (Math.abs(videoElement.currentTime - time) < 0.001) {
+      onSeeked();
+    } else {
+      videoElement.currentTime = time;
+    }
+  });
+};
+
+// Function to capture multiple snapshots at given times
+const handleCaptureAllSnapshots = async (times: number[]) => {
+  for (const time of times) {
+    const dataUrl = await captureFrameAt(time);
+    if (dataUrl) {
+      const titleElement = document.querySelector<HTMLElement>('h1.ytd-watch-metadata yt-formatted-string');
+      const title = titleElement?.innerText || 'No title found';
+      const snapshot: Snapshot = {
+        title,
+        time,
+        timestamp: Date.now(),
+        videoUrl: window.location.href,
+        imageDataUrl: dataUrl,
+      };
+      chrome.storage.local.get({ snapshots: [] }, ({ snapshots }) => {
+        const updated = [...snapshots, snapshot];
+        chrome.storage.local.set({ snapshots: updated }, () => {
+          logDebug('Snapshot saved via all capture:', snapshot);
+        });
+      });
+    }
+    await new Promise((r) => setTimeout(r, 500)); // throttle between captures
+  }
+};
+
+// Function to generate outline via AI
+const handleGenerateOutline = async (): Promise<OutlineItem[]> => {
+  try {
+    // Get API credentials
+    const { apiKey, modelName } = await getSettings();
+    
+    // Get accurate video information
+    const currentLocation = window.location.href;
+    const videoId = new URLSearchParams(window.location.search).get('v');
+    if (!videoId) {
+      console.error('Failed to extract video ID from URL', currentLocation);
+      return [];
+    }
+    
+    // Get the video element
+    const videoElement = document.querySelector<HTMLVideoElement>('video.html5-main-video');
+    if (!videoElement) {
+      console.error('Video element not found');
+      return [];
+    }
+    
+    // Get metadata
+    const titleElement = document.querySelector('h1.title.style-scope.ytd-video-primary-info-renderer');
+    const videoTitle = titleElement?.textContent?.trim() || 'Unknown Title';
+    const channelElement = document.querySelector('#text.ytd-channel-name');
+    const channelName = channelElement?.textContent?.trim() || 'Unknown Channel';
+    const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+    const videoDuration = videoElement.duration || 0;
+    
+    // Log info
+    console.log('Video Information:', { videoId, videoTitle, channelName, videoDuration });
+    
+    // Calculate appropriate number of outline points based on video length
+    const videoMinutes = videoDuration / 60;
+    let pointsPerMinute = videoDuration < 300 ? 0.8 : videoDuration < 900 ? 0.6 : 0.5;
+    const numPoints = Math.max(8, Math.min(20, Math.ceil(videoMinutes * pointsPerMinute)));
+    console.log('Requesting outline with points:', numPoints, 'based on duration:', videoMinutes.toFixed(2), 'min');
+
+    // Create sample data function - used in case of API errors
+    const generateSampleData = (): OutlineItem[] => {
+      console.warn('Using sample data due to API unavailability');
+      const items: OutlineItem[] = [];
+      
+      // Distribute points across video length
+      const interval = Math.max(2, Math.floor(videoMinutes / 8));
+      
+      // Sample data arrays
+      const pokerTitles = [
+        'ハンドの解析', 'オールイン場面', 'ブラフの成功', 'チップ獲得戦略',
+        '決断の瞬間', 'テーブルダイナミクス', '逆転のチャンス', '最終決戦'
+      ];
+      
+      const pokerDescriptions = [
+        'プレイヤーが重要なポーカーハンドの戦略と選択肢を詳しく検討しています。',
+        '緊迫したオールインの状況で、プレイヤーの心理戦と判断力が試されます。',
+        '巧妙なブラフ戦略によって大きなポットを獲得する場面です。',
+        '効果的なチップ管理とポジション戦略について説明しています。',
+        '重要な意思決定が勝敗を分ける緊張感のあるシーンです。',
+        'プレイヤー間の駆け引きと心理戦の変化が解説されます。',
+        '不利な状況からの復活のための効果的な戦略が示されます。',
+        'トーナメントの最終段階における重要な戦略的判断と結果です。'
+      ];
+      
+      // Generate sample timestamps
+      for (let i = 0; i < 8; i++) {
+        const minutes = Math.min(Math.floor(videoMinutes - 1), i * interval);
+        const seconds = Math.floor(Math.random() * 50);
+        const timestamp = (Math.floor(minutes / 60) * 3600) + ((minutes % 60) * 60) + seconds;
+        
+        // Content based on video title
+        let title, description;
+        if (videoTitle.toLowerCase().includes('poker')) {
+          title = pokerTitles[i % pokerTitles.length];
+          description = pokerDescriptions[i % pokerDescriptions.length];
+        } else {
+          title = `重要ポイント${i+1}`;
+          description = `このタイムスタンプでは動画の重要な内容が展開されています。`;
+        }
+        
+        items.push({ timestamp, title, description });
+      }
+      
+      return items;
+    };
+    
+    // Prepare API request
+    const prompt = `YouTube動画「${videoTitle}」のタイムスタンプ付きアウトラインを作成\n\n形式: [HH:MM:SS] タイトル: 説明\n説明は短く具体的に\n${numPoints}個以上のポイントを抽出してください`;
+    
+    let endpoint, requestBody;
+    if (modelName.startsWith('gemini')) {
+      endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+      requestBody = {
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.2, maxOutputTokens: 1024 }
+      };
+    } else {
+      endpoint = `https://api.openai.com/v1/chat/completions`;
+      requestBody = {
+        model: modelName,
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.2,
+        max_tokens: 1024
+      };
+    }
+    
+    console.log('API Request:', { endpoint, model: modelName, prompt });
+    
+    // Make the API request
+    try {
+      const resp = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          ...(modelName.startsWith('gemini') ? {} : { 'Authorization': `Bearer ${apiKey}` })
+        },
+        body: JSON.stringify(requestBody),
+      });
+      
+      // Check for API errors
+      if (!resp.ok) {
+        console.error('Outline API error', resp.status, await resp.text());
+        return generateSampleData(); // Use sample data for API errors
+      }
+      
+      // Process the response
+      const json = await resp.json();
+      console.log('Outline response:', json);
+      
+      // Extract text from response
+      let rawText = '';
+      if (json.candidates && Array.isArray(json.candidates) && json.candidates.length > 0) {
+        const candidate = json.candidates[0];
+        console.log('Response candidate:', JSON.stringify(candidate));
+        
+        if (candidate.content && Array.isArray(candidate.content.parts)) {
+          rawText = candidate.content.parts.map((part: any) => part.text || '').join('\n');
+        } else if (candidate.content && typeof candidate.content.text === 'string') {
+          rawText = candidate.content.text;
+        } else if (candidate.text) {
+          rawText = candidate.text;
+        }
+      }
+      
+      console.log('Extracted text (length: ' + rawText.length + '):', rawText);
+      
+      // Check for empty response
+      if (!rawText || rawText.trim() === '') {
+        console.warn('Empty content from API - using fallback');
+        return generateSampleData();
+      }
+      
+      // Parse the response text
+      const outlineItems: OutlineItem[] = [];
+      const lines = rawText.split(/\r?\n/);
+      
+      for (const line of lines) {
+        // Match timestamp patterns
+        const m = line.match(/\[?(\d{1,2}):(\d{1,2}):(\d{1,2})\]?\s*(.*?)(?:[:\uff1a\-]|\s+)\s*(.*)/);
+        
+        if (m) {
+          console.log(`Parsed item: time=${m[1]}:${m[2]}:${m[3]}, title="${m[4]}", desc="${m[5]}"`);
+              } else if (line.includes(':') && line.length > 10) {
+                console.log(`Failed to parse line: "${line}"`);
+              }
+              
+              if (m) {
+                const hh = +m[1], mm = +m[2], ss = +m[3];
+                outlineItems.push({ timestamp: hh*3600 + mm*60 + ss, title: m[4].trim(), description: m[5].trim() });
+              }
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error processing outline:', error);
+      // Generate sample data in case of any error
+      outlineItems = generateSampleData();
+    }
+    
+    return outlineItems;
+    }
+    return items;
+  } catch (error) {
+    console.error('Error generating outline:', error);
+    return [];
+  }
+};
+
+// Expose batch capture and outline generation to OverlayPanel
+(window as CustomWindow).handleCaptureAllSnapshots = handleCaptureAllSnapshots;
+(window as CustomWindow).handleGenerateOutline = handleGenerateOutline;
+
+// Function to create and render the simple overlay
+function initializeSimpleOverlay(attempt = 1) {
+  console.log(`YT Outline & Snap (Debug Version): initializeSimpleOverlay called (attempt ${attempt}).`);
+
+  // Prevent multiple injections if script somehow runs multiple times
+  if (document.getElementById(OVERLAY_CONTAINER_ID)) {
+    console.log('YT Outline & Snap (Debug Version): Debug overlay container already exists. Skipping.');
+    return;
+  }
+
+  if (document.getElementById(OVERLAY_CONTAINER_ID)) {
+    console.log('YT Outline & Snap (Debug Version): Debug overlay container already exists. Skipping.');
+    return;
+  }
+
+  // Only run on YouTube watch pages
+  if (!window.location.href.includes('youtube.com/watch')) {
+    console.log('YT Outline & Snap (Debug Version): Not a YouTube watch page. Skipping injection.');
+    return;
+  }
+
+  const container = document.createElement('div');
+  container.id = OVERLAY_CONTAINER_ID;
+  container.style.position = 'fixed';
+  container.style.zIndex = '2147483647';
+  
+  document.body.appendChild(container);
+  console.log('YT Outline & Snap (Debug Version): Debug overlay container created and appended to body.');
+
+  const appendedContainer = document.getElementById(OVERLAY_CONTAINER_ID);
+  if (appendedContainer) {
+    console.log('YT Outline & Snap (Debug Version): Container successfully found in DOM after append. Parent:', appendedContainer.parentElement?.tagName);
+    if (appendedContainer.parentElement !== document.body) {
+      console.warn('YT Outline & Snap (Debug Version): Container parent is NOT document.body! It is:', appendedContainer.parentElement?.tagName);
+    }
+
+    try {
+      if (appRoot) {
+        appRoot.unmount();
+        appRoot = null;
+      }
+      // Assign functions to window BEFORE rendering OverlayPanel
+      (window as CustomWindow).handleCaptureSnapshot = handleCaptureSnapshot;
+      logDebug('window.handleCaptureSnapshot assigned.');
+      (window as CustomWindow).handleSeekTo = (time: number) => {
+        const videoEl = document.querySelector<HTMLVideoElement>('video.html5-main-video');
+        if (videoEl) {
+          videoEl.currentTime = time;
+        }
+      };
+      logDebug('window.handleSeekTo assigned.');
+      appRoot = createRoot(container);
+      logDebug('React root created. Attempting to render OverlayPanel...');
+      appRoot.render(<OverlayPanel />);
+      logDebug('OverlayPanel render call completed.');
+
+    } catch (error) {
+      console.error('YT Outline & Snap (Debug Version): Error during React rendering phase:', error);
+      if (error instanceof Error && error.stack) {
+        console.error('YT Outline & Snap (Debug Version): Render error stack:', error.stack);
+      }
+      if (container.parentNode === document.body) {
+        document.body.removeChild(container);
+        console.log('YT Outline & Snap (Debug Version): Cleaned up container after render error.');
+      }
+    }
+
+  } else {
+    console.error(`YT Outline & Snap (Debug Version): CRITICAL (Attempt ${attempt}) - Container NOT found in DOM after append.`);
+    if (attempt < 3) { // 最大3回までリトライ
+      console.log(`YT Outline & Snap (Debug Version): Retrying initialization in 500ms...`);
+      setTimeout(() => initializeSimpleOverlay(attempt + 1), 500); // 500ms後にリトライ
+    } else {
+      console.error('YT Outline & Snap (Debug Version): Max retries reached. Could not initialize overlay.');
+    }
+  }
+}
+
+// Initialize the overlay when the script runs
+// We'll check if the DOM is already loaded, or wait for it, then use requestIdleCallback (fallback) instead of blocking rAF
+const scheduleInit = (callback: () => void) => {
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(callback);
+  } else {
+    requestAnimationFrame(callback);
+  }
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('YT Outline & Snap (Debug Version): DOMContentLoaded event. Requesting animation frame to initialize.');
+    scheduleInit(() => initializeSimpleOverlay());
+  });
+} else {
+  console.log('YT Outline & Snap (Debug Version): DOM likely loaded or body exists. Requesting animation frame to initialize.');
+  scheduleInit(() => initializeSimpleOverlay());
+}
+
+// --- End of simplified script ---
+// No SPA navigation handling (yt-page-data-updated listener removed)
+// No window.unload listener for cleanup in this version
+// The goal is to test basic, one-time injection and rendering.

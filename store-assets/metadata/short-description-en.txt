@@ -1,0 +1,1 @@
+Capture YouTube video snapshots and generate outlines with Gemini AI. Export in markdown format with timestamps.

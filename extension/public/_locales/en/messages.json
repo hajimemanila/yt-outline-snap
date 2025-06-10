@@ -1,0 +1,300 @@
+{
+    "extension_name": {
+      "message": "YT Outline & Snap"
+    },
+    "extension_description": {
+      "message": "Generate summaries and take snapshots of YouTube videos with an overlay UI"
+    },
+    "generate_summary": {
+      "message": "Generate Summary"
+    },
+    "capture_snapshot": {
+      "message": "Take Snapshot"
+    },
+    "capture_all": {
+      "message": "Capture All"
+    },
+    "api_key_settings": {
+      "message": "API Key Settings"
+    },
+    "api_key_label": {
+      "message": "Gemini API Key"
+    },
+    "model_name_label": {
+      "message": "Model Name"
+    },
+    "save_settings": {
+      "message": "Save Settings"
+    },
+    "drm_warning": {
+      "message": "DRM content detected. Snapshot feature is disabled."
+    },
+    "performance_warning": {
+      "message": "WebCodecs not available. Using fallback method with reduced performance."
+    },
+    "max_resolution_label": {
+      "message": "Maximum Resolution"
+    },
+    "settings_saved": {
+      "message": "Settings saved successfully"
+    },
+    "error_api_key_missing": {
+      "message": "API key is required. Please set it in the options page."
+    },
+    "error_api_call": {
+      "message": "Error calling Gemini API: "
+    },
+    "error_snapshot": {
+      "message": "Error taking snapshot: "
+    },
+    "loading": {
+      "message": "Loading..."
+    },
+    "overlay_delete_current_video": {
+      "message": "Delete data for this video"
+    },
+    "overlay_options": {
+      "message": "Options"
+    },
+    "overlay_delete_all": {
+      "message": "Delete All"
+    },
+    "overlay_export": {
+      "message": "Export"
+    },
+    "overlay_edit": {
+      "message": "Edit"
+    },
+    "overlay_delete": {
+      "message": "Delete"
+    },
+    "overlay_save": {
+      "message": "Save"
+    },
+    "overlay_cancel": {
+      "message": "Cancel"
+    },
+    "overlay_loading": {
+      "message": "Generating..."
+    },
+    "overlay_no_snapshots": {
+      "message": "No snapshots yet"
+    },
+    "overlay_no_outline": {
+      "message": "No outline available"
+    },
+    "overlay_custom_snapshots": {
+      "message": "Multiple Custom Snapshots"
+    },
+    "overlay_capture_all": {
+      "message": "Capture All"
+    },
+    "time_prefix": {
+      "message": "Time:"
+    },
+    "scroll_to_top": {
+      "message": "Scroll to top"
+    },
+    "capture_all_outline_snapshots": {
+      "message": "Capture snapshots at all outline timestamps"
+    },
+    "custom_times_placeholder": {
+      "message": "00:01:48,00:03:06,00:03:13"
+    },
+    "invalid_timestamps_error": {
+      "message": "Invalid timestamps or capture function unavailable."
+    },
+    "ai_description_generating": {
+      "message": "Generating AI description..."
+    },
+    "error_prefix": {
+      "message": "Error:"
+    },
+    "retry": {
+      "message": "Retry"
+    },
+    "ai_regenerate": {
+      "message": "AI Regenerate"
+    },
+    "ai_generate": {
+      "message": "Generate AI Description"
+    },
+    "no_description": {
+      "message": "No description available."
+    },
+    "processing": {
+      "message": "Processing..."
+    },
+    "storage_usage": {
+      "message": "Storage Usage"
+    },
+    "storage_used": {
+      "message": "Used:"
+    },
+    "snapshot_count": {
+      "message": "Snapshot count:"
+    },
+    "average_size": {
+      "message": "Average size:"
+    },
+    "snapshot": {
+      "message": "snapshot"
+    },
+    "clearing_data": {
+      "message": "Clearing data..."
+    },
+    "clear_all_data": {
+      "message": "Clear All Data"
+    },
+    "clear_data_success": {
+      "message": "All data has been successfully deleted"
+    },
+    "clear_data_error": {
+      "message": "Error occurred while deleting data"
+    },
+    "loading_storage_info": {
+      "message": "Loading storage information..."
+    },
+    "api_settings": {
+      "message": "API Settings"
+    },
+    "get_api_key_from": {
+      "message": " can be obtained from"
+    },
+
+    "high_resolution_warning": {
+      "message": "Higher resolutions will increase memory usage."
+    },
+    "beta_features": {
+      "message": "Beta Features"
+    },
+    "outline_edit_feature": {
+      "message": "Outline Editing Feature"
+    },
+    "outline_edit_description": {
+      "message": "Allows editing outline data. This feature is in beta."
+    },
+    "ad_pause_feature": {
+      "message": "Pause snapshot capture during ads"
+    },
+    "ad_pause_description": {
+      "message": "Pauses snapshot capture while ads are playing and resumes after they end. This feature is in beta."
+    },
+    "debug_options": {
+      "message": "Developer Options"
+    },
+    "debug_warning": {
+      "message": "These settings are for developers only. Changing them may cause unexpected behavior."
+    },
+    "i18n_overlay_option": {
+      "message": "Enable multilingual support for overlay UI (ENABLE_I18N_OVERLAY)"
+    },
+    "i18n_overlay_description": {
+      "message": "Localizes overlay panel UI text. This setting resets when the page is reloaded."
+    },
+    "i18n_prompts_option": {
+      "message": "Enable multilingual support for AI prompts (ENABLE_I18N_PROMPTS)"
+    },
+    "i18n_prompts_description": {
+      "message": "Switches AI prompt templates based on language settings. This setting resets when the page is reloaded."
+    },
+    "exclude_video_url_option_label": {
+      "message": "Exclude video URL from outline generation prompt"
+    },
+    "exclude_video_url_description_long": {
+      "message": "Excluding video URL from the prompt can speed up outline generation and save AI tokens, but may reduce the accuracy of the generated outline information."
+    },
+    "language_label": {
+      "message": "Language"
+    },
+    "language_english": {
+      "message": "English"
+    },
+    "language_japanese": {
+      "message": "Japanese"
+    },
+    "language_simplified_chinese": {
+      "message": "Chinese(Simplified)"
+    },
+    "language_korean": {
+      "message": "Korean"
+    },  
+    "confirm_clear_data": {
+      "message": "This will delete all snapshots and outline data.\nThis action cannot be undone.\nDo you want to continue?"
+    },
+    "current_language": {
+      "message": "Current language"
+    },
+    "custom_timestamp": {
+      "message": "Custom timestamp"
+    },
+    "custom_timestamp_description": {
+      "message": "Snapshot taken at custom timestamp"
+    },
+    "collapse": {
+      "message": "Collapse"
+    },
+    "expand": {
+      "message": "Expand"
+    },
+    "edit_outline": {
+      "message": "Edit outline"
+    },
+    "save_error": {
+      "message": "Error saving"
+    },
+    "outline_format_instruction": {
+      "message": "Format: [MM:SS] timestamp followed by title, then description (optional)"
+    },
+    "title_label": {
+      "message": "Title"
+    },
+    "description_optional": {
+      "message": "Description (optional)"
+    },
+    "saving": {
+      "message": "Saving..."
+    },
+    "warning_label": {
+      "message": "Warning"
+    },
+    "no_transcript_warning": {
+      "message": "The transcript for this video could not be retrieved, so the outline may contain inaccuracies."
+    },
+    "outline_heading": {
+      "message": "Outline"
+    },
+    "rewind_5_seconds": {
+      "message": "Rewind 5 seconds"
+    },
+    "pause": {
+      "message": "Pause"
+    },
+    "play": {
+      "message": "Play"
+    },
+    "forward_5_seconds": {
+      "message": "Forward 5 seconds"
+    },
+    "take_snapshot": {
+      "message": "Take a snapshot"
+    },
+    "delete_outline": {
+      "message": "Delete outline"
+    },
+    "no_outline_items": {
+      "message": "No outline items found."
+    },
+  "recommended_model_text": {
+    "message": "Recommended model: gemini-2.5-flash-preview-05-20 is recommended."
+  },
+  "advanced_settings_heading": {
+    "message": "Advanced Settings"
+  },
+  "language_settings_heading": {
+    "message": "Language Setting"
+  },
+  "language_setting_description": {
+    "message": "Outlines and image descriptions will be generated in English."
+  }
+}

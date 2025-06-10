@@ -1,0 +1,366 @@
+{
+    "extension_name": {
+      "message": "YT Outline & Snap"
+    },
+    "extension_description": {
+      "message": "YouTube動画の要約生成とスナップショット取得を行うオーバーレイ拡張"
+    },
+    "generate_summary": {
+      "message": "要約を生成"
+    },
+    "capture_snapshot": {
+      "message": "スナップショット"
+    },
+    "capture_all": {
+      "message": "全て撮影"
+    },
+    "api_key_settings": {
+      "message": "APIキー"
+    },
+    "api_key_label": {
+      "message": "Gemini APIキー"
+    },
+    "model_name_label": {
+      "message": "モデル名"
+    },
+    "save_settings": {
+      "message": "設定を保存"
+    },
+    "drm_warning": {
+      "message": "DRMコンテンツが検出されました。スナップショット機能は無効化されています。"
+    },
+    "performance_warning": {
+      "message": "WebCodecsが利用できません。パフォーマンスが低下する代替方法を使用します。"
+    },
+    "max_resolution_label": {
+      "message": "最大解像度"
+    },
+    "settings_saved": {
+      "message": "設定が正常に保存されました"
+    },
+    "error_api_key_missing": {
+      "message": "APIキーが必要です。オプションページで設定してください。"
+    },
+    "error_api_call": {
+      "message": "Gemini API呼び出しエラー: "
+    },
+    "error_snapshot": {
+      "message": "スナップショット取得エラー: "
+    },
+    "loading": {
+      "message": "読み込み中..."
+    },
+    "overlay_generate_outline": {
+      "message": "アウトライン生成"
+    },
+    "overlay_delete_all": {
+      "message": "全て削除"
+    },
+    "overlay_export": {
+      "message": "エクスポート"
+    },
+    "overlay_edit": {
+      "message": "編集"
+    },
+    "overlay_delete": {
+      "message": "削除"
+    },
+    "overlay_save": {
+      "message": "保存"
+    },
+    "overlay_cancel": {
+      "message": "キャンセル"
+    },
+    "overlay_options": {
+      "message": "オプション設定"
+    },
+    "overlay_loading": {
+      "message": "生成中..."
+    },
+    "overlay_no_snapshots": {
+      "message": "スナップショットはまだありません"
+    },
+    "overlay_no_outline": {
+      "message": "アウトラインはありません"
+    },
+    "overlay_custom_snapshots": {
+      "message": "複数カスタムスナップショット"
+    },
+    "overlay_capture_all": {
+      "message": "全て撮影"
+    },
+    "time_prefix": {
+      "message": "時間:"
+    },
+    "scroll_to_top": {
+      "message": "トップにスクロール"
+    },
+    "capture_all_outline_snapshots": {
+      "message": "アウトラインの全タイムスタンプでスナップショットを撮影"
+    },
+    "custom_times_placeholder": {
+      "message": "00:01:48,00:03:06,00:03:13"
+    },
+    "invalid_timestamps_error": {
+      "message": "無効なタイムスタンプまたは撮影機能が利用できません。"
+    },
+    "ai_description_generating": {
+      "message": "AI説明文生成中..."
+    },
+    "error_prefix": {
+      "message": "エラー:"
+    },
+    "retry": {
+      "message": "再試行"
+    },
+    "ai_regenerate": {
+      "message": "AI再生成"
+    },
+    "ai_generate": {
+      "message": "AI説明生成"
+    },
+    "no_description": {
+      "message": "説明がありません。"
+    },
+    "processing": {
+      "message": "処理中..."
+    },
+    "storage_usage": {
+      "message": "ストレージ使用状況"
+    },
+    "storage_used": {
+      "message": "使用量:"
+    },
+    "snapshot_count": {
+      "message": "スナップショット数:"
+    },
+    "average_size": {
+      "message": "平均サイズ:"
+    },
+    "snapshot": {
+      "message": "スナップショット"
+    },
+    "clearing_data": {
+      "message": "データを削除中..."
+    },
+    "clear_all_data": {
+      "message": "すべてのデータを削除"
+    },
+    "clear_data_success": {
+      "message": "すべてのデータが正常に削除されました"
+    },
+    "clear_data_error": {
+      "message": "データの削除中にエラーが発生しました"
+    },
+    "loading_storage_info": {
+      "message": "ストレージ情報を読み込み中..."
+    },
+    "api_settings": {
+      "message": "APIキー"
+    },
+    "get_api_key_from": {
+      "message": "から取得できます"
+    },
+
+    "high_resolution_warning": {
+      "message": "高解像度にするとメモリ使用量が増加します。"
+    },
+    "beta_features": {
+      "message": "ベータ機能"
+    },
+    "beta_features_heading": {
+      "message": "ベータ機能"
+    },
+    "outline_edit_feature": {
+      "message": "アウトライン編集機能"
+    },
+    "outline_edit_feature_label": {
+      "message": "アウトライン編集機能"
+    },
+    "outline_edit_description": {
+      "message": "アウトラインデータの編集を可能にします。この機能はベータ版です。"
+    },
+    "outline_edit_description_long": {
+      "message": "アウトラインデータの編集を可能にします。この機能はベータ版です。"
+    },
+    "ad_pause_feature": {
+      "message": "広告再生中はスナップショット撮影を一時停止"
+    },
+    "ad_pause_feature_label": {
+      "message": "広告再生中はスナップショット撮影を一時停止"
+    },
+    "ad_pause_description": {
+      "message": "広告再生中はスナップショット撮影を一時停止し、広告終了後に再開します。この機能はベータ版です。"
+    },
+    "ad_pause_description_long": {
+      "message": "広告再生中はスナップショット撮影を一時停止し、広告終了後に再開します。この機能はベータ版です。"
+    },
+    "debug_options": {
+      "message": "開発者オプション"
+    },
+    "debug_warning": {
+      "message": "これらの設定は開発者専用です。変更すると予期しない動作を引き起こす可能性があります。"
+    },
+    "i18n_overlay_option": {
+      "message": "オーバーレイUIの多言語サポートを有効化 (ENABLE_I18N_OVERLAY)"
+    },
+    "i18n_overlay_description": {
+      "message": "オーバーレイパネルのUIテキストをローカライズします。この設定はページの再読み込み時にリセットされます。"
+    },
+    "i18n_prompts_option": {
+      "message": "AIプロンプトの多言語サポートを有効化 (ENABLE_I18N_PROMPTS)"
+    },
+    "i18n_prompts_description": {
+      "message": "言語設定に基づいてAIプロンプトテンプレートを切り替えます。この設定はページの再読み込み時にリセットされます。"
+    },
+    "exclude_video_url_option_label": {
+      "message": "アウトライン生成時のプロンプトに動画URLを含めない"
+    },
+    "exclude_video_url_description_long": {
+      "message": "プロンプトに動画URLを含めないことで アウトライン生成が高速化しAIトークンを節約できますが、生成されるアウトライン情報の精度が低下するおそれがあります"
+    },
+    "language_label": {
+      "message": "言語"
+    },
+    "language_english": {
+      "message": "英語"
+    },
+    "language_japanese": {
+      "message": "日本語"
+    },
+    "language_chinese_simplified": {
+      "message": "中国語 (簡体)"
+    },
+    "language_korean": {
+      "message": "韓国語"
+    },
+    "language_select_label": {
+      "message": "言語選択"
+    },
+    "confirm_clear_data": {
+      "message": "これによりすべてのスナップショットとアウトラインデータが削除されます。\nこの操作は元に戻せません。\n続行しますか？"
+    },
+    "current_language": {
+      "message": "現在の言語"
+    },
+    "custom_timestamp": {
+      "message": "カスタムタイムスタンプ"
+    },
+    "custom_timestamp_description": {
+      "message": "カスタム設定されたタイムスタンプでのスナップショット"
+    },
+    "collapse": {
+      "message": "折りたたむ"
+    },
+    "expand": {
+      "message": "展開する"
+    },
+    "edit_outline": {
+      "message": "アウトラインを編集"
+    },
+    "save_error": {
+      "message": "保存中にエラーが発生しました"
+    },
+    "outline_format_instruction": {
+      "message": "形式: [MM:SS]形式のタイムスタンプの後にタイトル、続けて説明文（省略可）"
+    },
+    "title_label": {
+      "message": "タイトル"
+    },
+    "description_optional": {
+      "message": "説明文（省略可）"
+    },
+    "saving": {
+      "message": "保存中..."
+    },
+    "warning_label": {
+      "message": "注意"
+    },
+    "no_transcript_warning": {
+      "message": "対象の動画のトランスクリプトが取得できないため、アウトラインが誤った内容となっている可能性があります"
+    },
+    "outline_heading": {
+      "message": "アウトライン"
+    },
+    "rewind_5_seconds": {
+      "message": "5秒戻る"
+    },
+    "pause": {
+      "message": "停止"
+    },
+    "play": {
+      "message": "再生"
+    },
+    "forward_5_seconds": {
+      "message": "5秒進む"
+    },
+    "take_snapshot": {
+      "message": "スナップショットを撮る"
+    },
+    "delete_outline": {
+      "message": "アウトラインを削除"
+    },
+    "no_outline_items": {
+      "message": "アウトラインアイテムが見つかりません。"
+    },
+  "recommended_model_text": {
+    "message": "推奨モデル: gemini-2.5-flash-preview-05-20 が推奨されます。"
+  },
+  "advanced_settings_heading": {
+    "message": "詳細設定"
+  },
+  "language_settings_heading": {
+    "message": "言語設定"
+  },
+  "language_setting_description": {
+    "message": "アウトラインや画像説明文が日本語で生成されます。"
+  },
+  "save_settings_button": {
+    "message": "設定を保存"
+  },
+  "settings_saved_status": {
+    "message": "設定が保存されました"
+  },
+  "options_page_title": {
+    "message": "YT Outline & Snap - オプション"
+  },
+  "data_management_button": {
+    "message": "データ管理"
+  },
+  "data_management_heading": {
+    "message": "データ管理"
+  },
+  "data_management_description": {
+    "message": "保存されたスナップショットとアウトラインデータを管理します。"
+  },
+  "video_title": {
+    "message": "動画タイトル"
+  },
+  "last_updated": {
+    "message": "最終更新"
+  },
+  "delete_button": {
+    "message": "削除"
+  },
+  "delete_success": {
+    "message": "正常に削除されました"
+  },
+  "rewind_5_seconds_tooltip": {
+    "message": "5秒戻る"
+  },
+  "play_tooltip": {
+    "message": "再生"
+  },
+  "pause_tooltip": {
+    "message": "停止"
+  },
+  "forward_5_seconds_tooltip": {
+    "message": "5秒進む"
+  },
+  "take_snapshot_tooltip": {
+    "message": "スナップショットを撮る"
+  },
+  "delete_outline_tooltip": {
+    "message": "アウトラインを削除"
+  }
+}

@@ -1,0 +1,28 @@
+# YT Outline & Snap
+
+A Chrome extension that allows you to save important points as snapshots while watching YouTube videos and generate AI-powered outlines of the video content.
+
+## Key Features
+
+- **Snapshot Capture**: Easily capture screenshots of the current frame or at specific timestamps
+- **Outline Generation**: Automatically generate important points with timestamps using Gemini 2.5 Pro API
+- **Batch Capture**: Capture snapshots at all outline timestamps with a single click
+- **Export Functionality**: Export snapshots and descriptions as a ZIP file with markdown format
+- **Browser-Based**: Works completely within your browser with no server dependencies
+
+## How to Use
+
+1. After installing the extension, set up your Gemini API key in the options
+2. Use the overlay panel on YouTube video pages
+3. Click "Generate Outline" to create an AI-powered outline
+4. Use the "Snapshot" button to capture the current frame
+5. Click "Capture All" in the outline section to batch capture all timestamps
+6. Export all snapshots and a markdown file using the "Export All Snapshots" button
+
+## Important Notes
+
+- Snapshot functionality is not available for DRM-protected videos
+- Requires a Gemini API key (available from Google AI Studio)
+- Requires Chrome 117+ or Edge 117+ with WebCodecs API support
+
+Perfect tool for video learning, research, and content analysis.

@@ -1,0 +1,366 @@
+{
+    "extension_name": {
+      "message": "YT Outline & Snap"
+    },
+    "extension_description": {
+      "message": "生成 YouTube 视频摘要并截取快照的覆盖层扩展"
+    },
+    "generate_summary": {
+      "message": "生成摘要"
+    },
+    "capture_snapshot": {
+      "message": "截取快照"
+    },
+    "capture_all": {
+      "message": "全部截取"
+    },
+    "api_key_settings": {
+      "message": "API 密钥设置"
+    },
+    "api_key_label": {
+      "message": "Gemini API 密钥"
+    },
+    "model_name_label": {
+      "message": "模型名称"
+    },
+    "save_settings": {
+      "message": "保存设置"
+    },
+    "drm_warning": {
+      "message": "检测到 DRM 内容。快照功能已禁用。"
+    },
+    "performance_warning": {
+      "message": "WebCodecs 不可用。使用性能降低的备用方法。"
+    },
+    "max_resolution_label": {
+      "message": "最大分辨率"
+    },
+    "settings_saved": {
+      "message": "设置保存成功"
+    },
+    "error_api_key_missing": {
+      "message": "需要 API 密钥。请在选项页面中设置。"
+    },
+    "error_api_call": {
+      "message": "调用 Gemini API 错误："
+    },
+    "error_snapshot": {
+      "message": "截取快照错误："
+    },
+    "loading": {
+      "message": "加载中..."
+    },
+    "overlay_generate_outline": {
+      "message": "生成大纲"
+    },
+    "overlay_delete_all": {
+      "message": "全部删除"
+    },
+    "overlay_export": {
+      "message": "导出"
+    },
+    "overlay_edit": {
+      "message": "编辑"
+    },
+    "overlay_delete": {
+      "message": "删除"
+    },
+    "overlay_save": {
+      "message": "保存"
+    },
+    "overlay_cancel": {
+      "message": "取消"
+    },
+    "overlay_options": {
+      "message": "选项设置"
+    },
+    "overlay_loading": {
+      "message": "生成中..."
+    },
+    "overlay_no_snapshots": {
+      "message": "暂无快照"
+    },
+    "overlay_no_outline": {
+      "message": "无大纲可用"
+    },
+    "overlay_custom_snapshots": {
+      "message": "多个自定义快照"
+    },
+    "overlay_capture_all": {
+      "message": "全部截取"
+    },
+    "time_prefix": {
+      "message": "时间："
+    },
+    "scroll_to_top": {
+      "message": "滚动到顶部"
+    },
+    "capture_all_outline_snapshots": {
+      "message": "在所有大纲时间戳处截取快照"
+    },
+    "custom_times_placeholder": {
+      "message": "00:01:48,00:03:06,00:03:13"
+    },
+    "invalid_timestamps_error": {
+      "message": "无效的时间戳或截取功能不可用。"
+    },
+    "ai_description_generating": {
+      "message": "正在生成 AI 描述..."
+    },
+    "error_prefix": {
+      "message": "错误："
+    },
+    "retry": {
+      "message": "重试"
+    },
+    "ai_regenerate": {
+      "message": "AI 重新生成"
+    },
+    "ai_generate": {
+      "message": "生成 AI 描述"
+    },
+    "no_description": {
+      "message": "无描述可用。"
+    },
+    "processing": {
+      "message": "处理中..."
+    },
+    "storage_usage": {
+      "message": "存储使用情况"
+    },
+    "storage_used": {
+      "message": "已使用："
+    },
+    "snapshot_count": {
+      "message": "快照数量："
+    },
+    "average_size": {
+      "message": "平均大小："
+    },
+    "snapshot": {
+      "message": "快照"
+    },
+    "clearing_data": {
+      "message": "正在清除数据..."
+    },
+    "clear_all_data": {
+      "message": "清除所有数据"
+    },
+    "clear_data_success": {
+      "message": "所有数据已成功删除"
+    },
+    "clear_data_error": {
+      "message": "删除数据时发生错误"
+    },
+    "loading_storage_info": {
+      "message": "正在加载存储信息..."
+    },
+    "api_settings": {
+      "message": "API 设置"
+    },
+    "get_api_key_from": {
+      "message": "可从以下位置获取"
+    },
+
+    "high_resolution_warning": {
+      "message": "更高的分辨率会增加内存使用量。"
+    },
+    "beta_features": {
+      "message": "测试版功能"
+    },
+    "beta_features_heading": {
+      "message": "测试版功能"
+    },
+    "outline_edit_feature": {
+      "message": "大纲编辑功能"
+    },
+    "outline_edit_feature_label": {
+      "message": "大纲编辑功能"
+    },
+    "outline_edit_description": {
+      "message": "允许编辑大纲数据。此功能为测试版。"
+    },
+    "outline_edit_description_long": {
+      "message": "允许编辑大纲数据。此功能为测试版。"
+    },
+    "ad_pause_feature": {
+      "message": "广告期间暂停快照截取"
+    },
+    "ad_pause_feature_label": {
+      "message": "广告期间暂停快照截取"
+    },
+    "ad_pause_description": {
+      "message": "在播放广告时暂停快照截取，广告结束后恢复截取。此功能为测试版。"
+    },
+    "ad_pause_description_long": {
+      "message": "在播放广告时暂停快照截取，广告结束后恢复截取。此功能为测试版。"
+    },
+    "debug_options": {
+      "message": "开发者选项"
+    },
+    "debug_warning": {
+      "message": "这些设置仅供开发者使用。更改它们可能导致意外行为。"
+    },
+    "i18n_overlay_option": {
+      "message": "启用覆盖层 UI 多语言支持 (ENABLE_I18N_OVERLAY)"
+    },
+    "i18n_overlay_description": {
+      "message": "本地化覆盖层面板 UI 文本。此设置在页面重新加载时重置。"
+    },
+    "i18n_prompts_option": {
+      "message": "启用 AI 提示词多语言支持 (ENABLE_I18N_PROMPTS)"
+    },
+    "i18n_prompts_description": {
+      "message": "根据语言设置切换 AI 提示词模板。此设置在页面重新加载时重置。"
+    },
+    "exclude_video_url_option_label": {
+      "message": "从大纲生成提示词中排除视频 URL"
+    },
+    "exclude_video_url_description_long": {
+      "message": "从提示词中排除视频 URL 可以加快大纲生成并节省 AI 令牌，但可能会降低生成的大纲信息的准确性。"
+    },
+    "language_label": {
+      "message": "语言"
+    },
+    "language_english": {
+      "message": "英语"
+    },
+    "language_japanese": {
+      "message": "日语"
+    },
+    "language_chinese_simplified": {
+      "message": "简体中文"
+    },
+    "language_korean": {
+      "message": "韩语"
+    },
+    "language_select_label": {
+      "message": "选择语言"
+    },
+    "confirm_clear_data": {
+      "message": "这将删除所有快照和大纲数据。\n此操作无法撤销。\n是否继续？"
+    },
+    "current_language": {
+      "message": "当前语言"
+    },
+    "custom_timestamp": {
+      "message": "自定义时间戳"
+    },
+    "custom_timestamp_description": {
+      "message": "在自定义时间戳处截取的快照"
+    },
+    "collapse": {
+      "message": "折叠"
+    },
+    "expand": {
+      "message": "展开"
+    },
+    "edit_outline": {
+      "message": "编辑大纲"
+    },
+    "save_error": {
+      "message": "保存时发生错误"
+    },
+    "outline_format_instruction": {
+      "message": "格式：[MM:SS] 时间戳后跟标题，然后是描述（可选）"
+    },
+    "title_label": {
+      "message": "标题"
+    },
+    "description_optional": {
+      "message": "描述（可选）"
+    },
+    "saving": {
+      "message": "保存中..."
+    },
+    "warning_label": {
+      "message": "警告"
+    },
+    "no_transcript_warning": {
+      "message": "无法检索此视频的字幕，因此大纲可能包含不准确信息。"
+    },
+    "outline_heading": {
+      "message": "大纲"
+    },
+    "rewind_5_seconds": {
+      "message": "后退 5 秒"
+    },
+    "pause": {
+      "message": "暂停"
+    },
+    "play": {
+      "message": "播放"
+    },
+    "forward_5_seconds": {
+      "message": "快进 5 秒"
+    },
+    "take_snapshot": {
+      "message": "截取快照"
+    },
+    "delete_outline": {
+      "message": "删除大纲"
+    },
+    "no_outline_items": {
+      "message": "未找到大纲项目。"
+    },
+  "recommended_model_text": {
+    "message": "推荐模型：建议使用 gemini-2.5-flash-preview-05-20"
+  },
+  "advanced_settings_heading": {
+    "message": "高级设置"
+  },
+  "language_settings_heading": {
+    "message": "语言设置"
+  },
+  "language_setting_description": {
+    "message": "大纲和图像描述将以中文生成。"
+  },
+  "save_settings_button": {
+    "message": "保存设置"
+  },
+  "settings_saved_status": {
+    "message": "设置已保存"
+  },
+  "options_page_title": {
+    "message": "YT Outline & Snap - 选项"
+  },
+  "data_management_button": {
+    "message": "数据管理"
+  },
+  "data_management_heading": {
+    "message": "数据管理"
+  },
+  "data_management_description": {
+    "message": "管理已保存的快照和大纲数据。"
+  },
+  "video_title": {
+    "message": "视频标题"
+  },
+  "last_updated": {
+    "message": "最后更新"
+  },
+  "delete_button": {
+    "message": "删除"
+  },
+  "delete_success": {
+    "message": "已成功删除"
+  },
+  "rewind_5_seconds_tooltip": {
+    "message": "后退 5 秒"
+  },
+  "play_tooltip": {
+    "message": "播放"
+  },
+  "pause_tooltip": {
+    "message": "暂停"
+  },
+  "forward_5_seconds_tooltip": {
+    "message": "快进 5 秒"
+  },
+  "take_snapshot_tooltip": {
+    "message": "截取快照"
+  },
+  "delete_outline_tooltip": {
+    "message": "删除大纲"
+  }
+}
